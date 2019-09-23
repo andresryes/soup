@@ -46,7 +46,7 @@ class Portal:
         if(len(soup.find_all(attrs={"href":True})) > 30):
             for i in soup.find_all(attrs={"href":True}):
                 if i.text != "":
-                    f.writelines("-"+i.name.strip()+": "+i.text.strip()+"%d\r\n")
+                    f.writelines("-"+i.name.strip()+": "+i.text.strip()+"\r\n")
         else:
             result.append("-"+i.name.strip()+": "+i.text.strip())
 
@@ -66,7 +66,7 @@ class Portal:
         f = open("../logs/1portal_get_hrefs_all_img.txt","w+")
         if len(soup.find_all(attrs={"src":True})) > 30:
             for i in soup.find_all(attrs={"src":True}):
-                f.writelines("-" + i['src']+"%d\r\n")
+                f.writelines("-" + i['src']+"\r\n")
         else:
             result.append("-" + i['src'])
         result.append("---------------------------------------")
