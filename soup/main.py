@@ -1,5 +1,6 @@
 import sys
 from portal import Portal
+from estudios import Estudios
 from request import Request
 #print ('Argument List:', str(sys.argv))
 
@@ -19,7 +20,8 @@ def main(args):
         result = runAll(result)
     elif args.__contains__("1"):
         result = portal(result)
-    
+    elif args.__contains__("2"):
+        result = estudios(result)   
     printResult(result)
 
 #portal method that instances the Portal class and run it
@@ -34,19 +36,28 @@ def portal(result):
     res = res + portalArray
     return res
 
+#estudios method that instances the Estudios class and run it
+def estudios(result):
+    res = []
+    res.append("=============================")
+    res.append("2. Estudios")
+    soup = request.makeGet("http://ufm.edu/Portal")
+    #soup = request.makeGet("http://ufm.edu"+soup.find(id="menu-table").find_all(class_="menu-key")[0].a['href'])
+    soup = request.makeGet("http://ufm.edu/Estudios")
+    estudios = Estudios(soup)
+    estudiosArray = estudios.init()
+    res += estudiosArray
+    return res
+
 #method defined if no args set
 def runAll(result):
     result += portal(result)
+    result += estudios(result)
     return result
+
 #method to print results 
 def printResult(result):
-
     result.insert(0, "Enrique Andres Bolanos Reyes")
-
-    #if len(result) > 30:
-        #method to print result in file
-        #pass
-    #else:
     for i in result:
         print(i)
 
