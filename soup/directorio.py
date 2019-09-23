@@ -24,4 +24,12 @@ class Directorio:
             f.write(i+"\r\n")
         result.append("---------------------------------------")
 
+        #Count all emails that start with a vowel. (just display the count)
+        count = 0
+        for i in emails:
+            if i[0] in ['a','e','i','o','u','A','E','I','O','U']:
+                count = count+1
+        result.append(f"Count all emails that start with a vowel. (just display the count): {count}")
+        result.append("---------------------------------------")
+        
         return result
