@@ -1,6 +1,7 @@
 import sys
 from portal import Portal
 from estudios import Estudios
+from cs import CS
 from request import Request
 #print ('Argument List:', str(sys.argv))
 
@@ -22,6 +23,8 @@ def main(args):
         result = portal(result)
     elif args.__contains__("2"):
         result = estudios(result)   
+    elif args.__contains__("3"):
+        result = cs(result)  
     printResult(result)
 
 #portal method that instances the Portal class and run it
@@ -49,10 +52,23 @@ def estudios(result):
     res += estudiosArray
     return res
 
+#cs method 
+#estudios method that instances the Estudios class and run it
+def cs(result):
+    res = []
+    res.append("=============================")
+    res.append("3. CS")
+    soup = request.makeGet("https://fce.ufm.edu/carrera/cs/")
+    cs = CS(soup)
+    csArray = cs.init()
+    res += csArray
+    return res
+
 #method defined if no args set
 def runAll(result):
     result += portal(result)
     result += estudios(result)
+    result += cs(result)
     return result
 
 #method to print results 
