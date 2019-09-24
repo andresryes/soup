@@ -282,9 +282,9 @@ using ["https://www.ufm.edu/Directorio"](https://www.ufm.edu/Directorio)
 
 
 ## 5. Extra
-- [ ] Complete Dockerfile
-- [ ] Create README section for Dockerfile under [`Usage Dockerfile`](#usage-dockerfile)
-- [ ] Add CI to your own repo.
+- [x] Complete Dockerfile
+- [x] Create README section for Dockerfile under [`Usage Dockerfile`](#usage-dockerfile)
+- [x] Add CI to your own repo.
 
 
 ---
@@ -307,10 +307,19 @@ In order to start your project:
 - [x] everytime you complete an "item" make sure to mark it as done [x]
 
 ## Usage Dockerfile
-```bash
-Put your Docker build/run/etc commands here
-```
 
+In order to use this project with Docker, you must build the image with the following command:
+```bash
+docker build --rm -f "Dockerfile" -t andresry/soup:latest . --build-arg PHASE=2
+```
+Note that you could select which PHASE you'd like to build and run. If you want to see all the phases, leave it without the args.
+```bash
+docker build --rm -f "Dockerfile" -t andresry/soup:latest .
+```
+After you've built it, you can run the image with the following command:
+```bash
+docker run -it andresry/soup:latest
+```
 ---
 # Delivery
 - FORK IT!!
