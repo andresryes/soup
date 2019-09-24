@@ -24,7 +24,7 @@ class Directorio:
                 emails.append(str(i['href'].replace("mailto:","")))
         emails.sort()
         #print(emails)
-        f = open("../logs/4directorio_emails.txt","w+")
+        f = open("../logs/4directorio_emails.txt","w+",encoding='utf-8')
         for i in emails:
             f.write(i+"\r\n")
         result.append("---------------------------------------")
@@ -150,14 +150,14 @@ class Directorio:
         result.append("GET the directory of all 3 column table and generate a CSV with these columns (Entity,FullName, Email), and dump it to logs/4directorio_3column_tables.csv")
         
         #get the table in which the entities are
-        tab = soup.find_all(class_="tabla ancho100 col3")[0]
-
+        tab = soup.find_all(class_="tabla ancho100 col3")[0].find_all('td')
+        #print(tab)
         #defined the list
-        
-        for i in range(2, len(tablaRaw), 3):
-            fac = tablaRaw[i-2].text
-            name = tablaRaw[i-1].text
-            mail = tablaRaw[i].text
+        entities = []
+        for i in range(2, len(tab), 3):
+            fac = tab[i-2].text
+            name = tab[i-1].text
+            mail = tab[i].text
             if name != "":
                 if(name[0]==" "):
                     li = list(name)
@@ -174,13 +174,12 @@ class Directorio:
             entities.append(entity)
             #print(tablaRaw[i].text)
 
-        with open('../logs/4directorio_3column_tables.csv', 'w+') as csvfile:
+        with open('../logs/4directorio_3column_tables.csv', 'w+', encoding='utf-8') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            filewriter.writerow(['Text','href'])
-            for i in soup.find_all('a'):
-                filewriter.writerow([i.text.strip(), i["href"].strip()])        
-        
+            filewriter.writerow(['Entity','FullName','Email'])
+            for e in entities:
+                filewriter.writerow([e.faculty, e.name, e.mail])     
         result.append("---------------------------------------")
         
         return result

@@ -20,7 +20,7 @@ class CS:
         #get all href
         result.append(f"GET and display the href: Output exceeds 30 lines, sending output to: logs/3cs_display_the_href.txt")
 
-        f = open("../logs/3cs_display_the_href.txt","w+")
+        f = open("../logs/3cs_display_the_href.txt","w+",encoding='utf-8')
         f.writelines("Date of generation: " + str(datetime.now())+"\r\n")
         f.writelines("================================================"+"\r\n")
         if(len(soup.find_all(attrs={"href":True})) > 30):

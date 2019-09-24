@@ -42,7 +42,7 @@ class Portal:
         #find all a that has href to somewhere
         result.append(f"find all properties that have href (link to somewhere): Output exceeds 30 lines, sending output to: logs/1portal_find_all_properties_with_href.txt")
         soup.find_all("a")
-        f = open("../logs/1portal_find_all_properties_with_href.txt","w+")
+        f = open("../logs/1portal_find_all_properties_with_href.txt","w+",encoding='utf-8')
         f.writelines("Date of generation: " + str(datetime.now())+"\r\n")
         f.writelines("================================================"+"\r\n")
         if(len(soup.find_all(attrs={"href":True})) > 30):
@@ -65,7 +65,7 @@ class Portal:
         #get all src for all imgs
         result.append(f"GET hrefs of all <img>: Output exceeds 30 lines, sending output to: logs/1portal_get_hrefs_all_img.txt")
         soup.find_all("img")
-        f = open("../logs/1portal_get_hrefs_all_img.txt","w+")
+        f = open("../logs/1portal_get_hrefs_all_img.txt","w+",encoding='utf-8')
         f.writelines("Date of generation: " + str(datetime.now())+"\r\n")
         f.writelines("================================================"+"\r\n")
         if len(soup.find_all(attrs={"src":True})) > 30:
@@ -80,7 +80,7 @@ class Portal:
         result.append("---------------------------------------")       
 
         #extra
-        with open('../logs/extra_as.csv', 'w+') as csvfile:
+        with open('../logs/extra_as.csv', 'w+',encoding='utf-8') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)
             filewriter.writerow(['Text','href'])

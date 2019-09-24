@@ -21,7 +21,7 @@ class Estudios:
         # display ALL "Estudios" (Doctorados/Maestrias/Posgrados/Licenciaturas/Baccalaureus)
         result.append(f"display ALL \"Estudios\" (Doctorados/Maestrias/Posgrados/Licenciaturas/Baccalaureus):  Output exceeds 30 lines, sending output to: logs/2estudios_display_all_estudios.txt")            
 
-        f = open("../logs/2estudios_display_all_estudios.txt","w+")
+        f = open("../logs/2estudios_display_all_estudios.txt","w+",encoding='utf-8')
         f.writelines("Date of generation: " + str(datetime.now())+"\r\n")
         f.writelines("================================================"+"\r\n")
         if(len(soup.find_all(class_="estudios")[0].parent.parent.parent.parent.find_all('div')[0].find_all('a')) > 30):
