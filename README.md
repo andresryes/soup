@@ -214,19 +214,19 @@ using ["http://ufm.edu/Estudios"](http://ufm.edu/Estudios)
 using ["https://fce.ufm.edu/carrera/cs/"](https://fce.ufm.edu/carrera/cs/)
 
 - [x] GET title
-- [ ] GET and display the href
-- [ ] Download the "FACULTAD de CIENCIAS ECONOMICAS" logo. (you need to obtain the link dynamically)
-- [ ] GET following &lt;meta>: "title", "description" ("og")
-- [ ] count all &lt;a> (just display the count)
-- [ ] count all &lt;div> (just display the count)
+- [x] GET and display the href
+- [x] Download the "FACULTAD de CIENCIAS ECONOMICAS" logo. (you need to obtain the link dynamically)
+- [x] GET following &lt;meta>: "title", "description" ("og")
+- [x] count all &lt;a> (just display the count)
+- [x] count all &lt;div> (just display the count)
 
 
 ## 4. Directorio
 using ["https://www.ufm.edu/Directorio"](https://www.ufm.edu/Directorio)
 
-- [ ] Sort all emails alphabetically (`href="mailto:arquitectura@ufm.edu"`) in a list, dump it to logs/4directorio_emails.txt
-- [ ] Count all emails that start with a vowel. (just display the count)
-- [ ] Group in a JSON all rows that have `Same Address` (dont use Room number) as address, dump it to logs/4directorio_address.json
+- [x] Sort all emails alphabetically (`href="mailto:arquitectura@ufm.edu"`) in a list, dump it to logs/4directorio_emails.txt
+- [x] Count all emails that start with a vowel. (just display the count)
+- [x] Group in a JSON all rows that have `Same Address` (dont use Room number) as address, dump it to logs/4directorio_address.json
 
 
 ```javascript
@@ -252,7 +252,7 @@ using ["https://www.ufm.edu/Directorio"](https://www.ufm.edu/Directorio)
 }
 ```
 
-- [ ] Try to correlate in a JSON Faculty Dean and Directors, and dump it to `logs/4directorio_deans.json`
+- [x] Try to correlate in a JSON Faculty Dean and Directors, and dump it to `logs/4directorio_deans.json`
 
 ```javascript
 {
@@ -272,7 +272,7 @@ using ["https://www.ufm.edu/Directorio"](https://www.ufm.edu/Directorio)
 }
 ```
 
-- [ ] GET the directory of all 3 column table and generate a CSV with these columns (Entity,FullName, Email), and dump it to `logs/4directorio_3column_tables.csv`
+- [x] GET the directory of all 3 column table and generate a CSV with these columns (Entity,FullName, Email), and dump it to `logs/4directorio_3column_tables.csv`
 
 | Entity        	| FullName                	| Email            	|
 |---------------	|-------------------------	|------------------	|
