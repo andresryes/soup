@@ -2,6 +2,7 @@ import sys
 from portal import Portal
 from estudios import Estudios
 from cs import CS
+from directorio import Directorio
 from request import Request
 #print ('Argument List:', str(sys.argv))
 
@@ -25,6 +26,8 @@ def main(args):
         result = estudios(result)   
     elif args.__contains__("3"):
         result = cs(result)  
+    elif args.__contains__("4"):
+        result = directorio(result)  
     printResult(result)
 
 #portal method that instances the Portal class and run it
@@ -45,15 +48,14 @@ def estudios(result):
     res.append("=============================")
     res.append("2. Estudios")
     soup = request.makeGet("http://ufm.edu/Portal")
-    #soup = request.makeGet("http://ufm.edu"+soup.find(id="menu-table").find_all(class_="menu-key")[0].a['href'])
-    soup = request.makeGet("http://ufm.edu/Estudios")
+    soup = request.makeGet("http://ufm.edu"+soup.find(id="menu-table").find_all(class_="menu-key")[0].a['href'])
+    #soup = request.makeGet("http://ufm.edu/Estudios")
     estudios = Estudios(soup)
     estudiosArray = estudios.init()
     res += estudiosArray
     return res
 
 #cs method 
-#estudios method that instances the Estudios class and run it
 def cs(result):
     res = []
     res.append("=============================")
@@ -64,11 +66,23 @@ def cs(result):
     res += csArray
     return res
 
+#directorio method 
+def directorio(result):
+    res = []
+    res.append("=============================")
+    res.append("4. Directorio")
+    soup = request.makeGet("https://www.ufm.edu/Directorio")
+    directorio = Directorio(soup)
+    dirArray = directorio.init()
+    res += dirArray
+    return res
+
 #method defined if no args set
 def runAll(result):
     result += portal(result)
     result += estudios(result)
     result += cs(result)
+    result += directorio(result)
     return result
 
 #method to print results 
