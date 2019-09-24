@@ -4,6 +4,7 @@ from estudios import Estudios
 from cs import CS
 from directorio import Directorio
 from request import Request
+import os
 #print ('Argument List:', str(sys.argv))
 
 #Instance of request class, in order to DRY
@@ -19,7 +20,20 @@ def main(args):
 
     #call the correct methods according to the args
     if len(args) == 0:
-        result = runAll(result)
+        if os.environ['PHASE']:
+            #print(os.environ['PHASE'])
+            if os.environ['PHASE'] == "1":
+                result = portal(result)
+            elif os.environ['PHASE'] == "2":
+                result = estudios(result)   
+            elif os.environ['PHASE'] == "3":
+                result = cs(result)
+            elif os.environ['PHASE'] == "4":
+                result = directorio(result)
+            else:
+                result = runAll(result)
+        else:
+            result = runAll(result)
     elif args.__contains__("1"):
         result = portal(result)
     elif args.__contains__("2"):
