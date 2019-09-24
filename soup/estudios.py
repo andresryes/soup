@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class Estudios:
     def __init__(self, soup):
         self.soup = soup
@@ -20,6 +22,8 @@ class Estudios:
         result.append(f"display ALL \"Estudios\" (Doctorados/Maestrias/Posgrados/Licenciaturas/Baccalaureus):  Output exceeds 30 lines, sending output to: logs/2estudios_display_all_estudios.txt")            
 
         f = open("../logs/2estudios_display_all_estudios.txt","w+")
+        f.writelines("Date of generation: " + str(datetime.now())+"\r\n")
+        f.writelines("================================================"+"\r\n")
         if(len(soup.find_all(class_="estudios")[0].parent.parent.parent.parent.find_all('div')[0].find_all('a')) > 30):
             for i in soup.find_all(class_="estudios")[0].parent.parent.parent.parent.find_all('div')[0].find_all('a'):
                 if i.text != "":

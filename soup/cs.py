@@ -1,6 +1,6 @@
 import requests
 import shutil
-
+from datetime import datetime
 class CS:
     def __init__(self, soup):
         self.soup = soup
@@ -21,6 +21,8 @@ class CS:
         result.append(f"GET and display the href: Output exceeds 30 lines, sending output to: logs/3cs_display_the_href.txt")
 
         f = open("../logs/3cs_display_the_href.txt","w+")
+        f.writelines("Date of generation: " + str(datetime.now())+"\r\n")
+        f.writelines("================================================"+"\r\n")
         if(len(soup.find_all(attrs={"href":True})) > 30):
             for i in soup.find_all(attrs={"href":True}):
                 if i.text != "":
